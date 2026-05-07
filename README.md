@@ -15,7 +15,8 @@
 
 # EP04 
 
-## Umwandlung json zu geojson
+Umwandlung json zu geojson
+```
 import json
 
 # 1. Datei laden (Stelle sicher, dass oevk.json im gleichen Ordner liegt)
@@ -59,8 +60,10 @@ with open('ungarn_wahlbezirke.geojson', 'w', encoding='utf-8') as f:
     json.dump(geojson, f)
 
 print("Fertig! Die Datei 'ungarn_wahlbezirke.geojson' wurde erstellt.")
+```
 
-## Code zur Auswahl der gewinnenden Partei in Attributtabelle
+Code zur Auswahl der gewinnenden Partei in Attributtabelle
+```
 case
  
 when  "ungarn_wahlen_2026_Tisza_Stimmen" >  "ungarn_wahlen_2026_Fidesz_Stimmen" THEN 'Tisza'
@@ -70,3 +73,23 @@ when  "ungarn_wahlen_2026_Tisza_Stimmen" <  "ungarn_wahlen_2026_Fidesz_Stimmen" 
 else 'Unentschieden'
 
 end
+```
+win_value berechnen mit max Funktion (max Tidasz, Fidesz)
+
+win_rel berechnen mit win value / wahlberechtigte
+
+win_advantage berechnen mit abs (abs (tidasz-fidesz)/(tidasz+fidesz+mh)*100
+
+value by alpha variieren (nach Vorsprung)
+```
+set_color_part( 
+ 'black',
+ 'alpha',
+ scale_linear("win_advantage",
+ 1,45,
+ 0,200)
+ )
+```
+
+
+# 1. Karte wie LV, 2. Karte nur Stimmanteil Fidesz 3. Karte nur Stimmmanteil Tidasz
