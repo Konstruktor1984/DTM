@@ -92,12 +92,24 @@ set_color_part(
 ```
 
 
-# 1. Karte wie LV, 2. Karte nur Stimmanteil Fidesz 3. Karte nur Stimmmanteil Tidasz
+## 1. Karte wie LV, 2. Karte nur Stimmanteil Fidesz 3. Karte nur Stimmmanteil Tidasz
 
 
-# EP07
+# EP07 Animation in QGIS
+<img width="1012" height="639" alt="Geminiden2022-12-14" src="https://github.com/user-attachments/assets/bec81828-10f9-41ae-a3c9-7b1b0546a9db" />
+Dargestellt ist der Geminiden-Meteorschauer am 14.12.2022-15.12.2022 während seines Peaks über dem Vereinigten Königreich und Irland. 
 
 ## Vor- und Nachteile der Methode
 ## Umsetzung der Methode 
+meteoshowers.org
+https://tammojan.github.io/meteormap/
+Umwandlung Zeitformat in ISO Format -> colab
+Geometriegenerator LatLonBeg - LatLonEnd
+Interpolierte Linie
+Dynamische Zeitsteuerung
+Export als Bilderstapel
+GIF Erstellung mit Python -> colab
+<img width="3159" height="1997" alt="KartenausschnittGeminiden" src="https://github.com/user-attachments/assets/66ee1fa4-870f-4487-8f8b-8a843862afc9" />
+
 
 
