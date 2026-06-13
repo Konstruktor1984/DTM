@@ -93,3 +93,11 @@ set_color_part(
 
 
 # 1. Karte wie LV, 2. Karte nur Stimmanteil Fidesz 3. Karte nur Stimmmanteil Tidasz
+
+
+# EP07
+
+## Vor- und Nachteile der Methode
+## Umsetzung der Methode 
+
+
