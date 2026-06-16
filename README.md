@@ -95,8 +95,7 @@ set_color_part(
 ## 1. Karte wie LV, 2. Karte nur Stimmanteil Fidesz 3. Karte nur Stimmmanteil Tidasz
 
 # EP06 Digitales Höhenmodell in QGIS 
-
-
+<img width="5847" height="8270" alt="DeutschlandLegoMap-1" src="https://github.com/user-attachments/assets/977bc9ce-e3a0-46ac-92ca-5fbff8fc7c5e" />
 
 
 # EP07 Animation in QGIS
