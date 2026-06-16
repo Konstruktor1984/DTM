@@ -94,6 +94,10 @@ set_color_part(
 
 ## 1. Karte wie LV, 2. Karte nur Stimmanteil Fidesz 3. Karte nur Stimmmanteil Tidasz
 
+# EP06 Digitales Höhenmodell in QGIS 
+
+
+
 
 # EP07 Animation in QGIS
 <img width="1012" height="639" alt="Geminiden2022-12-14" src="https://github.com/user-attachments/assets/bec81828-10f9-41ae-a3c9-7b1b0546a9db" />
