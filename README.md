@@ -127,6 +127,8 @@ GIF Erstellung mit Python -> colab
 ## Vor- und Nachteile der Methode
 
 # EP08 Mesh-Daten
+<img width="1268" height="723" alt="Ep 08 eigenes0000" src="https://github.com/user-attachments/assets/8172721b-8a90-467f-b379-ea3f53211cd0" />
+Link zum GIF: 
 
 
 
