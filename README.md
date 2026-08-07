@@ -2,19 +2,21 @@
 # EP01 Dasymmetrische Chloroplethenkarten
 <img width="10523" height="7440" alt="DTM_EP01_Thorben Flick" src="https://github.com/user-attachments/assets/2385e742-db06-4a96-841d-596e1d2b79f1" />
 
-## Vor- und Nachteile der Methode
 ## Umsetzung der Methode 
+## Vor- und Nachteile der Methode
 
 # EP02
 <img width="3368" height="2380" alt="Kirschblüten-1" src="https://github.com/user-attachments/assets/bbe1d4f0-1b73-4d82-93cb-ff7d57a8189a" />
 
-
-## Vor- und Nachteile der Methode
 ## Umsetzung der Methode
-### Bild als 
+## Vor- und Nachteile der Methode
 
-# EP04 
+# EP03 Punktrasterkarten
 
+
+# EP04 value-by-alpha-mapping
+
+## Umsetzung der Methode
 Umwandlung json zu geojson
 ```
 import json
@@ -91,22 +93,28 @@ set_color_part(
  )
 ```
 
+## Vor- und Nachteile der Methode
 
 ## 1. Karte wie LV, 2. Karte nur Stimmanteil Fidesz 3. Karte nur Stimmmanteil Tidasz
+
 # EP05 Ursprung-Ziel Karten
 <img width="4210" height="2975" alt="Hyperglobe BHT Studenten-1" src="https://github.com/user-attachments/assets/34db0a52-4975-44e8-8cc6-091c92564aa0" />
 
+## Umsetzung der Methode
+## Vor- und Nachteile der Methode
 
 # EP06 Digitales Höhenmodell in QGIS 
 <img width="5847" height="8270" alt="DeutschlandLegoMap-1" src="https://github.com/user-attachments/assets/977bc9ce-e3a0-46ac-92ca-5fbff8fc7c5e" />
 
+## Umsetzung der Methode
+## Vor- und Nachteile der Metho
 
 # EP07 Animation in QGIS
 <img width="1012" height="639" alt="Geminiden2022-12-14" src="https://github.com/user-attachments/assets/bec81828-10f9-41ae-a3c9-7b1b0546a9db" />
 Dargestellt ist der Geminiden-Meteorschauer am 14.12.2022-15.12.2022 während seines Peaks über dem Vereinigten Königreich und Irland. 
 
-## Vor- und Nachteile der Methode
-## Umsetzung der Methode 
+## Umsetzung der Methode
+
 meteoshowers.org
 https://tammojan.github.io/meteormap/
 Umwandlung Zeitformat in ISO Format -> colab
@@ -115,7 +123,18 @@ Interpolierte Linie
 Dynamische Zeitsteuerung
 Export als Bilderstapel
 GIF Erstellung mit Python -> colab
-<img width="3159" height="1997" alt="KartenausschnittGeminiden" src="https://github.com/user-attachments/assets/66ee1fa4-870f-4487-8f8b-8a843862afc9" />
+
+## Vor- und Nachteile der Methode
+
+# EP08 Mesh-Daten
+
+## Vor- und Nachteile der Methode
+## Umsetzung der Methode
+
+# EP09 3D-Gebäudemodelle
+
+## Vor- und Nachteile der Methode
+## Umsetzung der Methode
 
 
 
