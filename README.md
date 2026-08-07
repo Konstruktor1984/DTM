@@ -127,9 +127,8 @@ GIF Erstellung mit Python -> colab
 ## Vor- und Nachteile der Methode
 
 # EP08 Mesh-Daten
-<img width="1268" height="723" alt="Ep 08 eigenes0000" src="https://github.com/user-attachments/assets/8172721b-8a90-467f-b379-ea3f53211cd0" />
-## Permalink GIF: 
-![]()
+![](https://github.com/Konstruktor1984/DTM/blob/85bc6b75220bbe5899620f0d8dbdf57a7458f936/Orkan%20Kyrill.gif)
+
 Grundlage sind die Wetterdaten (.grib) des Copernicus-Programms (EU) aus dem "Climate Data Store" vom 16.01.2007 00:00 bis 21.01.2007 16:00. Die vorhandenen Winddaten (Geschwindigkeit und Richtung) sollten in QGIS im Stile eines Künstlers visualisiert werden.
 
 ## Umsetzung der Methode
