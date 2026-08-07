@@ -129,10 +129,13 @@ GIF Erstellung mit Python -> colab
 # EP08 Mesh-Daten
 ![](https://github.com/Konstruktor1984/DTM/blob/85bc6b75220bbe5899620f0d8dbdf57a7458f936/Orkan%20Kyrill.gif)
 
-Grundlage sind die Wetterdaten (.grib) des Copernicus-Programms (EU) aus dem "Climate Data Store" vom 16.01.2007 00:00 bis 21.01.2007 16:00. Die vorhandenen Winddaten (Geschwindigkeit und Richtung) sollten in QGIS im Stile eines Künstlers visualisiert werden.
+Grundlage sind die Wetterdaten (als .grib) des Copernicus-Programms (EU) aus dem "Climate Data Store" vom 16.01.2007 00:00 bis 21.01.2007 16:00. Die vorhandenen Winddaten (Geschwindigkeit und Richtung) sollten in QGIS im Stile eines Künstlers visualisiert werden.
 
 ## Umsetzung der Methode
+Die .grib Daten wurden in QGIS eingepflegt und die Stromlinienform passend eingestellt. Als Basislayer dient eine ESRI Satellite Map. Ich habe mich für die Gestaltung nach Vincent van Gogh entschieden. Basis dafür war das Bild "Sternennacht" aus Blau, Gelb und Weißtönen. Dazu wurde die ESRI Basiskarte nachtblau eingefärbt, sodass die topographischen Merkmale Europas nur noch schemenhaft zu erkennen sind. Die Stromlinien der Windvektoren sind durch einen Farbverlaufsshader von nachtblau (niedrige Windgeschwindigkeit) über ockergelb (mittlere Windgeschwindigkeit) bis cremeweiß (hohe Windgeschwindigkeit) nach Geschwindigkeit (0-18 m/s) eingefärbt. Damit repräsentieren sie die vorherrschenden Farbtöne des Bildes "Sternennacht". Ich habe mich gegen einen Mischmodus bzw. dem Mischen des Wind- und Basiskartenlayers entschieden, da eine farbgetreue Abbildung nicht möglich und keine ästhetische Verbesserung zu erwarten war. 
+Mit einem zeitlichen Intervall von einer Stunde pro Bild wurde ein Bilderstapel exportiert, als GIF zusammengeführt und für den github-Upload komprimiert. Die nachträgliche Kompression hat den Nebeneffekten von "ausgefransten" Linien, welche der Malerei auf Leinwand nahe kommen. 
 ## Vor- und Nachteile der Methode
+Die Darstellung gibt einen schnellen, groben Überblick über die Windlage über Europa im Zeitabschnitt. Außerdem ist sie gut geeignet für ästhetische Darstellungen (nach Künstlern oder wie in der Lehrveranstaltung). Sie eignet sich schlecht für eine genaue Lokalisation von Orten (Maßstab zu klein) und ist limitiert durch den maximalen Detailgrad (Stromliniendicke und Maßstab bei Export) Benutzerfreundlicher wäre eine interaktive Karte mit Zoomleveln und dynamisch angepassten Stromliniendicken, welche eine feinere Beobachtung der Wetterlage ermöglichen. Zustäzlich sind kleinere Zeitintervalle und ein Panel mit Start/Stopp, Zeitachse und "fast forward" Button vom Vorteil bei der Betrachtung dynamischer Karten. 
 
 # EP09 3D-Gebäudemodelle
 
