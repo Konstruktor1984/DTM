@@ -139,8 +139,29 @@ Die Darstellung gibt einen schnellen, groben Überblick über die Windlage über
 
 # EP09 3D-Gebäudemodelle
 
-## Vor- und Nachteile der Methode
-## Umsetzung der Methode
+## 2,5D Darstellung der Oldenburger Innenstadt
+<img width="3368" height="2380" alt="oldenburg2_5d-1" src="https://github.com/user-attachments/assets/3885b3ce-c709-4103-97fd-fd2e26338c1f" />
+
+
+
+## 3D Darstellung von Norderney
+<img width="2116" height="820" alt="Screenshot 2026-08-18 2018459" src="https://github.com/user-attachments/assets/dafc144e-7373-4f84-a016-4c2bf004b6f4" />
+
+prozess:
+<img width="1848" height="959" alt="Screenshot 2026-08-18 195944" src="https://github.com/user-attachments/assets/550914ff-f1bb-43e7-9f36-de7c4ae8b34f" />
+ welliges Gelände, untenansicht
+ <img width="2457" height="1213" alt="Screenshot 2026-08-18 200039" src="https://github.com/user-attachments/assets/c41bfc05-d713-4908-85bd-fbcd8abaa597" />
+
+Mosaik aus vier GeoTif DGM1 Kacheln als DGM für die 3D Ansicht
+<img width="2553" height="1150" alt="Screenshot 2026-08-18 200833" src="https://github.com/user-attachments/assets/b0d594c1-29bd-4acc-a03b-060a51928f6c" />
+Ergebnis:
+<img width="2363" height="1156" alt="Screenshot 2026-08-18 201233" src="https://github.com/user-attachments/assets/67f9b214-659f-4714-a229-b1a5df738aa7" />
+
+Anpassung mit Farbe durch regelbasierte Symbolisierung
+<img width="2514" height="1307" alt="Screenshot 2026-08-18 201933" src="https://github.com/user-attachments/assets/0b134204-b5cd-4e99-b6eb-5cce430ca7db" />
+
+
+
 
 
 
