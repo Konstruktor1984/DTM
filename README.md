@@ -101,6 +101,10 @@ set_color_part(
 <img width="4210" height="2975" alt="Hyperglobe BHT Studenten-1" src="https://github.com/user-attachments/assets/34db0a52-4975-44e8-8cc6-091c92564aa0" />
 
 ## Umsetzung der Methode
+Definition einer eigenen Projektion, zentriert auf Berlin
+```
++proj=ortho +lat_0=52.52 +lon_0=13.40 +x_0=0 +y_0=0 +a=6371000 +b=6371000 +units=m +no_defs
+```
 ## Vor- und Nachteile der Methode
 
 # EP06 Digitales Höhenmodell in QGIS 
