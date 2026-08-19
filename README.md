@@ -15,6 +15,7 @@
 
 
 # EP04 value-by-alpha-mapping
+<img width="4960" height="3507" alt="UngarnWahlen3fach" src="https://github.com/user-attachments/assets/b64942b1-2936-491f-a4c7-93b86a50a4a0" />
 
 ## Umsetzung der Methode
 Umwandlung json zu geojson
@@ -95,7 +96,6 @@ set_color_part(
 
 ## Vor- und Nachteile der Methode
 
-## 1. Karte wie LV, 2. Karte nur Stimmanteil Fidesz 3. Karte nur Stimmmanteil Tidasz
 
 # EP05 Ursprung-Ziel Karten
 <img width="4210" height="2975" alt="Hyperglobe BHT Studenten-1" src="https://github.com/user-attachments/assets/34db0a52-4975-44e8-8cc6-091c92564aa0" />
