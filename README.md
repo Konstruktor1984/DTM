@@ -34,7 +34,7 @@ Die Shapefile der tatsächlichen Wohngebiete stammt aus dem *Informationssystem 
 >Im dasymetrischen Prozess werden die administrativen Einheiten in kleinere, mehr Karten relevante Einheiten (tatsächliche Wohngebiete), aufgespalten. Das Ziel ist die Modellierung einer genaueren räumlichen Verteilung von Populationen als es bei der Choroplethenkarte möglich ist und deren Darstellung in Karten. (verändert aus: https://de-academic.com/dic.nsf/dewiki/304884)
 
 
-## Modifiable-Area-Unit-Problem (MAUP)
+## Modifiable-Areal-Unit-Problem (MAUP)
 Die dreifache Darstellung verdeutlicht das MAUP-Problem: 
 Punktbasierte Erhebungen werden auf Räume/Verwaltungseinheiten/Zonen aggregiert. Entstehende Statistikwerte werden durch die Form und Größe der Aggregationsräume beeinflusst. Die Wahl der Aggregationsräume sollte immer berücksichtigt werden. 
 
