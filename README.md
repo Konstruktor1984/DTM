@@ -1,7 +1,7 @@
 ```
 DTM SoSe 26 Thorben Flick
 ```
-# EP01 (Dasymmetrische) Chloroplethenkarten
+# EP01 (Dasymetrische) Chloroplethenkarten
 
 <img width="10523" height="7440" alt="DTM_EP01_Thorben Flick" src="https://github.com/user-attachments/assets/2385e742-db06-4a96-841d-596e1d2b79f1" />
 
@@ -29,7 +29,7 @@ Die Shapefile der tatsächlichen Wohngebiete stammt aus dem *Informationssystem 
 <img width="2237" height="358" alt="image" src="https://github.com/user-attachments/assets/de9d51df-134c-4dd8-985b-7a65f7e5e62a" />
 
 
-> Dasymmetrische Chloroplethenkarten:
+> Dasymetrische Chloroplethenkarten:
 > 
 >Im dasymetrischen Prozess werden die administrativen Einheiten in kleinere, mehr Karten relevante Einheiten (tatsächliche Wohngebiete), aufgespalten. Das Ziel ist die Modellierung einer genaueren räumlichen Verteilung von Populationen als es bei der Choroplethenkarte möglich ist und deren Darstellung in Karten. (verändert aus: https://de-academic.com/dic.nsf/dewiki/304884)
 
@@ -41,18 +41,27 @@ Punktbasierte Erhebungen werden auf Räume/Verwaltungseinheiten/Zonen aggregiert
 <img width="40%" height="auto" alt="image" src="https://github.com/user-attachments/assets/74d28850-b015-4cbe-8546-1fb3fb5ae2e0" />
 
 (aus: https://en.wikipedia.org/wiki/Modifiable_areal_unit_problem)
-# EP02
+
+# EP02 Gitterchloroplethenkarten
 
 <img width="3368" height="2380" alt="Kirschblüten-1" src="https://github.com/user-attachments/assets/bbe1d4f0-1b73-4d82-93cb-ff7d57a8189a" />
 
 ## Umsetzung der Methode
-## Vor- und Nachteile der Methode
+Der Baumbestand Berlins wurde über einen *WebFeatureService (WFS)* der Senatsverwaltung Berlin abgerufen und die Kirschbäume aus dem Datensatz extrahiert. Über das Shapefile von Berlin ist ein Hexagongitter mit 500 m x 500 m Hexagonen zugeschnitten worden.
 
+<img width="1599" height="1069" alt="image" src="https://github.com/user-attachments/assets/344293d3-1532-49fd-9d70-e8681a106926" />
+
+Auf jedes Hexagon wurde die Anzahl an Punkten (Kirschbäume) aggregiert und nach absoluter Anzahl eingefärbt. 
+> Gitterchloroplethenkarten
+>
+> Im Gegensatz zu den Chloroplethenkarten ist der Raum nicht in administrative Grenzen sondern in ein Raster gleich großer Raster- bzw. Gitterzellen (hier: Hexagone) geteilt. Jede Rasterzelle erhält eine bestimmte Farbe / Farbintensität, welche sich nach dem Wert des thematischen Objektes (Anzahl der Kirschbäume im Hexagon) richtet. Die Bezugsfläche ist eine regelmäßige geometrische Fläche.
+## Vor- und Nachteile der Methode
+Gitterchloroplethenkarten verringern das MAUP-Problem der Chloroplethenkarten. Außerdem ist ein Zeitreihenvergleich (z.B. Bestandsaufnahmen alle 10 Jahre) einfacher möglich, da sich das geometrische Gitter im Gegensatz zu Verwaltungseinheiten nicht ändern kann. Probleme treten auf, wenn Cluster durch "unglückliche" Platzierung des Gitters zerschnitten werden. Außerdem beeinflusst die Wahl der Gitterzellengröße massiv das Ergebnis. Hier bietet es sich an, verschiedene Größen zu vergleichen. 
 # EP03 Punktrasterkarten
 
 <img width="3507" height="2480" alt="punktrasterlayout" src="https://github.com/user-attachments/assets/f9a2fb7f-f0f2-47bc-b56e-304017cf5508" />
 
-
+Als Variante sollte das Ergebnis ebenfalls als Punktrasterkarte dargestellt werden. Das Hexagongitter verliert seine Form, während die Aggregationsart (500x500 m Hexagone) die selbe bleibt. Alleinig die Symbolisierung auf Karte wird verändert. Dies kann die Lesbarkeit erhöhen. 
 # EP04 value-by-alpha-mapping
 
 <img width="4960" height="3507" alt="UngarnWahlen3fach" src="https://github.com/user-attachments/assets/b64942b1-2936-491f-a4c7-93b86a50a4a0" />
