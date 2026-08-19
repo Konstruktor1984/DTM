@@ -1,11 +1,48 @@
-# DTM
-# EP01 Dasymmetrische Chloroplethenkarten
+```
+DTM SoSe 26 Thorben Flick
+```
+# EP01 (Dasymmetrische) Chloroplethenkarten
+
 <img width="10523" height="7440" alt="DTM_EP01_Thorben Flick" src="https://github.com/user-attachments/assets/2385e742-db06-4a96-841d-596e1d2b79f1" />
 
 ## Umsetzung der Methode 
-## Vor- und Nachteile der Methode
+Auf drei verschiedene Arten sollte die Bevölkerungsverteilung Berlins dargestellt werden. Dabei wurden... 
 
+**...(1) absolute Bevölkerungszahlen auf die lebensweltlich orientierten Räume (LOR) aggreggiert**
+
+Die absoluten Bevölkerungszahlen stammen vom *Amt für Statistik Berlin-Brandenburg*. Sie wurden auf die LOR-Shapefile der *Senatsverwaltung Berlin* gerechnet.
+Große LOR-Planungsräume mit hoher Bevölkerungsanzahl (aufgrund ihrer größeren Fläche) treten visuell stärker hervor und suggerieren eine höhe Bevölkerungsdichte. Kleine, dicht besiedelte LOR-Planungsräume rücken in den Hintergrund. Es liegt eine Verzerrung durch die Größe der Verwaltungseinheit vor.
+
+**...(2) relative Bevölkerungsdichten in $Einwohnern/km^2$ auf die LOR aggregiert**
+
+Diese Darstellung gibt ein besseres Bild über die tatsächliche Bevölkerungsdichte in den Verwaltungseinheiten. Die Flächenverzerrung ist verschwunden, insbesondere im Südwesten, Norden und Südosten der Stadt.
+
+> Chloroplethenkarten:
+>
+>Gebiete werden im Verhältnis zur Verteilungsdichte des thematischen Objektes eingefärbt, gepunktet, schattiert oder schraffiert.
+In den Karten (1) und (2) sind Planungsräume (LOR) im Verhältnis zur absoluten und relativen Bevölkerungsverteilung
+(thematisches Objekt) eingefärbt.
+
+**...(3) relative Bevölkerungsdichten in $Einwohnern/km^2$ auf die tatsächlichen Wohngebiete aggregiert**
+
+Die Shapefile der tatsächlichen Wohngebiete stammt aus dem *Informationssystem Stadt und Umwelt 5 (ISU5)* der Senatsverwaltung Berlin und lassen sich über *WebMapService (WMS)* direkt in QGIS aufrufen. Im Datensatz vorhanden sind bereits Bevölkerungszahlen zu jedem Block. Nach Auflösen der ursprünglichen Shapefile auf Wohngebiete- und Mischnutzungsblocks konnten die Gebiete entsprechend eingefärbt werden. 
+<img width="2237" height="358" alt="image" src="https://github.com/user-attachments/assets/de9d51df-134c-4dd8-985b-7a65f7e5e62a" />
+
+
+> Dasymmetrische Chloroplethenkarten:
+> 
+>Im dasymetrischen Prozess werden die administrativen Einheiten in kleinere, mehr Karten relevante Einheiten (tatsächliche Wohngebiete), aufgespalten. Das Ziel ist die Modellierung einer genaueren räumlichen Verteilung von Populationen als es bei der Choroplethenkarte möglich ist und deren Darstellung in Karten. (verändert aus: https://de-academic.com/dic.nsf/dewiki/304884)
+
+
+## Modifiable-Area-Unit-Problem (MAUP)
+Die dreifache Darstellung verdeutlicht das MAUP-Problem: 
+Punktbasierte Erhebungen werden auf Räume/Verwaltungseinheiten/Zonen aggregiert. Entstehende Statistikwerte werden durch die Form und Größe der Aggregationsräume beeinflusst. Die Wahl der Aggregationsräume sollte immer berücksichtigt werden. 
+
+<img width="668" height="652" alt="image" src="https://github.com/user-attachments/assets/74d28850-b015-4cbe-8546-1fb3fb5ae2e0" />
+
+(aus: https://en.wikipedia.org/wiki/Modifiable_areal_unit_problem)
 # EP02
+
 <img width="3368" height="2380" alt="Kirschblüten-1" src="https://github.com/user-attachments/assets/bbe1d4f0-1b73-4d82-93cb-ff7d57a8189a" />
 
 ## Umsetzung der Methode
@@ -13,57 +50,16 @@
 
 # EP03 Punktrasterkarten
 
+<img width="3507" height="2480" alt="punktrasterlayout" src="https://github.com/user-attachments/assets/f9a2fb7f-f0f2-47bc-b56e-304017cf5508" />
+
 
 # EP04 value-by-alpha-mapping
+
 <img width="4960" height="3507" alt="UngarnWahlen3fach" src="https://github.com/user-attachments/assets/b64942b1-2936-491f-a4c7-93b86a50a4a0" />
 
 ## Umsetzung der Methode
 Umwandlung json zu geojson
-```
-import json
 
-# 1. Datei laden (Stelle sicher, dass oevk.json im gleichen Ordner liegt)
-with open('oevk.json', 'r', encoding='utf-8') as f:
-    data = json.load(f)
-
-geojson = {
-    "type": "FeatureCollection",
-    "features": []
-}
-
-for item in data:
-    # Koordinaten-String säubern und in Liste von Floats umwandeln
-    # Wichtig: In der Quelle ist es "Lat Lon", GeoJSON braucht "Lon Lat"
-    raw_coords = item['poligon'].split(',')
-    clean_coords = []
-    for pair in raw_coords:
-        lat, lon = pair.strip().split(' ')
-        clean_coords.append([float(lon), float(lat)])
-
-    # Erstes Element am Ende wiederholen, um Polygon zu schließen
-    if clean_coords[0] != clean_coords[-1]:
-        clean_coords.append(clean_coords[0])
-
-    feature = {
-        "type": "Feature",
-        "properties": {
-            "maz": item['maz'],
-            "evk": item['evk'],
-            "centrum": item['centrum']
-        },
-        "geometry": {
-            "type": "Polygon",
-            "coordinates": [clean_coords]
-        }
-    }
-    geojson['features'].append(feature)
-
-# 2. Als echte GeoJSON speichern
-with open('ungarn_wahlbezirke.geojson', 'w', encoding='utf-8') as f:
-    json.dump(geojson, f)
-
-print("Fertig! Die Datei 'ungarn_wahlbezirke.geojson' wurde erstellt.")
-```
 
 Code zur Auswahl der gewinnenden Partei in Attributtabelle
 ```
@@ -98,6 +94,7 @@ set_color_part(
 
 
 # EP05 Ursprung-Ziel Karten
+
 <img width="4210" height="2975" alt="Hyperglobe BHT Studenten-1" src="https://github.com/user-attachments/assets/34db0a52-4975-44e8-8cc6-091c92564aa0" />
 
 ## Umsetzung der Methode
@@ -108,12 +105,17 @@ Definition einer eigenen Projektion, zentriert auf Berlin
 ## Vor- und Nachteile der Methode
 
 # EP06 Digitales Höhenmodell in QGIS 
-<img width="5847" height="8270" alt="DeutschlandLegoMap-1" src="https://github.com/user-attachments/assets/977bc9ce-e3a0-46ac-92ca-5fbff8fc7c5e" />
+
+<img width="9921" height="7015" alt="BerlinLegoMapModern" src="https://github.com/user-attachments/assets/023c528d-f965-4a26-b485-027a25cf05b6" />
+
+<img width="7015" height="9921" alt="DeutschlandLegoMapModern" src="https://github.com/user-attachments/assets/2b845ec0-ca33-4e35-bdc7-221b4087b368" />
+
 
 ## Umsetzung der Methode
 ## Vor- und Nachteile der Metho
 
 # EP07 Animation in QGIS
+
 <img width="1012" height="639" alt="Geminiden2022-12-14" src="https://github.com/user-attachments/assets/bec81828-10f9-41ae-a3c9-7b1b0546a9db" />
 Dargestellt ist der Geminiden-Meteorschauer am 14.12.2022-15.12.2022 während seines Peaks über dem Vereinigten Königreich und Irland. 
 
@@ -131,6 +133,7 @@ GIF Erstellung mit Python -> colab
 ## Vor- und Nachteile der Methode
 
 # EP08 Mesh-Daten
+
 ![](https://github.com/Konstruktor1984/DTM/blob/85bc6b75220bbe5899620f0d8dbdf57a7458f936/Orkan%20Kyrill.gif)
 
 Grundlage sind die Wetterdaten (als .grib) des Copernicus-Programms (EU) aus dem "Climate Data Store" vom 16.01.2007 00:00 bis 21.01.2007 16:00. Die vorhandenen Winddaten (Geschwindigkeit und Richtung) sollten in QGIS im Stile eines Künstlers visualisiert werden.
@@ -144,11 +147,13 @@ Die Darstellung gibt einen schnellen, groben Überblick über die Windlage über
 # EP09 3D-Gebäudemodelle
 
 ## 2,5D Darstellung der Oldenburger Innenstadt
+
 <img width="3368" height="2380" alt="oldenburg2_5d-1" src="https://github.com/user-attachments/assets/3885b3ce-c709-4103-97fd-fd2e26338c1f" />
 
 
 
 ## 3D Darstellung von Norderney
+
 <img width="2116" height="820" alt="Screenshot 2026-08-18 2018459" src="https://github.com/user-attachments/assets/dafc144e-7373-4f84-a016-4c2bf004b6f4" />
 
 prozess:
