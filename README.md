@@ -37,8 +37,9 @@ Die Shapefile der tatsächlichen Wohngebiete stammt aus dem *Informationssystem 
 ## Modifiable-Areal-Unit-Problem (MAUP)
 Die dreifache Darstellung verdeutlicht das MAUP-Problem: 
 Punktbasierte Erhebungen werden auf Räume/Verwaltungseinheiten/Zonen aggregiert. Entstehende Statistikwerte werden durch die Form und Größe der Aggregationsräume beeinflusst. Die Wahl der Aggregationsräume sollte immer berücksichtigt werden. 
-
-<img width="40%" height="auto" alt="image" src="https://github.com/user-attachments/assets/74d28850-b015-4cbe-8546-1fb3fb5ae2e0" />
+<p align="center">
+   <img width="40%" height="auto" alt="image" src="https://github.com/user-attachments/assets/74d28850-b015-4cbe-8546-1fb3fb5ae2e0" />
+</p>
 
 (aus: https://en.wikipedia.org/wiki/Modifiable_areal_unit_problem)
 
@@ -116,9 +117,9 @@ Definition einer eigenen Projektion, zentriert auf Berlin
 # EP06 Digitales Höhenmodell in QGIS 
 
 <img width="9921" height="7015" alt="BerlinLegoMapModern" src="https://github.com/user-attachments/assets/023c528d-f965-4a26-b485-027a25cf05b6" />
-
-<img width="60%" height="auto" alt="DeutschlandLegoMapModern" src="https://github.com/user-attachments/assets/2b845ec0-ca33-4e35-bdc7-221b4087b368" />
-
+<p align="center">
+   <img width="60%" height="auto" alt="DeutschlandLegoMapModern" src="https://github.com/user-attachments/assets/2b845ec0-ca33-4e35-bdc7-221b4087b368" />
+<p>
 
 ## Umsetzung der Methode
 ## Vor- und Nachteile der Metho
