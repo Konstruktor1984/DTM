@@ -126,8 +126,7 @@ Auf die nach Wahlkreissieger eingefärbten Wahlkreise wird eine schwarze Fläche
 >  Value-by-alpha Karten:
 >
 > stellen zwei Variablen (bivariat) gleichzeitig dar, indem zwei visuelle Eigenschaften (Farbton und Transparenz)
-miteinander kombiniert werden. "Alpha" bezeichnet in der Computergrafik den Wert der Transparenz einer Farbe, es    werden also Werte (hier: Stimmenvorsprung) durch den Alpha-Wert / Transparenz abgebildet. Ziel dieser Darstellung ist Kombination zweier Kartendarstellung in eine, die Reduktion einer visuellen Überforderung (unrelevante Daten 
-treten in den Hintergrund) und die Darstellung einer räumlichen Verteilung ("Hochburgen"). 
+miteinander kombiniert werden. "Alpha" bezeichnet in der Computergrafik den Wert der Transparenz einer Farbe, es werden also Werte (hier: Stimmenvorsprung) durch den Alpha-Wert / Transparenz abgebildet. Ziel dieser Darstellung ist Kombination zweier Kartendarstellung in eine, die Reduktion einer visuellen Überforderung (irrelevante Daten treten in den Hintergrund) und die Darstellung einer räumlichen Verteilung ("Hochburgen"). 
 
 ## Erkenntnisse 
 Zu erkennen ist, das Tisza in den Städten Hochburgen an Wählern besitzt, während in den ländlicheren Gebieten der Vorsprung zu der zweitplatzierten Partei (Fidesz) geringer ist. 
@@ -137,7 +136,7 @@ Zu erkennen ist, das Tisza in den Städten Hochburgen an Wählern besitzt, währ
 <img width="4210" height="2975" alt="Hyperglobe BHT Studenten-1" src="https://github.com/user-attachments/assets/34db0a52-4975-44e8-8cc6-091c92564aa0" />
 
 ## Umsetzung der Methode
-Die Shapefiles der Kontinente, Ozeane und Länder stammen von naturalearthdata.org und die Daten der Austauschstudenten von der BHT Refereat Auslandsangelegenheiten. Für die Darstellung einer Ursprung-Ziel Karte sollte der Globus auf Berlin zentriert werden. 
+Die Shapefiles der Kontinente, Ozeane und Länder stammen von naturalearthdata.org und die Daten der Austauschstudenten von der BHT Referat Auslandsangelegenheiten. Für die Darstellung einer Ursprung-Ziel Karte sollte der Globus auf Berlin zentriert werden. 
 
 Definition einer eigenen Projektion, zentriert auf Berlin
 ```
@@ -162,7 +161,7 @@ Die Karte gibt einen schnellen Überblick über die Austauschstudenten der BHT i
 
 <img width="9921" height="7015" alt="BerlinLegoMapModern" src="https://github.com/user-attachments/assets/023c528d-f965-4a26-b485-027a25cf05b6" />
 
-In der Lehrveranstaltung sollte ein digitales Geländemodell im Lego Stil von Berlin erstellt werden. Deutlich zu erkennen ist das Urstromtal und Erhebungen wie 
+In der Lehrveranstaltung sollte ein digitales Geländemodell im Lego Stil von Berlin erstellt werden. Deutlich zu erkennen ist das Urstromtal, die Ausläufer der Havel nordwestlich von Grunewald und Erhebungen wie der Teufelsberg in Charlottenburg.
 
 <p align="center">
    <img width="60%" height="auto" alt="DeutschlandLegoMapModern" src="https://github.com/user-attachments/assets/2b845ec0-ca33-4e35-bdc7-221b4087b368" />
@@ -171,6 +170,7 @@ In der Lehrveranstaltung sollte ein digitales Geländemodell im Lego Stil von Be
 ## Umsetzung der Methode
 Grundlage ist ein digitales Höhenmodell (DGM) Deutschlands als .geotiff-Datei. Das Rasterbild besteht aus Grauwerten, welche je nach Höhe variieren. Auf die Shapefile Deutschlands wurde ein Gitter (Quadrate) zugeschnitten. Der Rasterlayer des DGM und der Polygonvektorlayer des Gitters wurden mit der *Zonenstatistik* verrechnet. Auf jede Zelle des Polygonvektorlayers wird der durchschnittliche Höhenwert berechnet und abgespeichert. Die Zellen mit den Durchschnittswerten wurden entsprechend symbolisiert und im Legostil gestylt.
 
+Wichtig ist bei der Darstellung von Höhenmodellen die sinnvolle Klassifizierung der Symbolisierung. Unterschiedliche Klassifizierungen können die Sichtbarkeit von Gebirgen, Täler und Höhenunterschieden verringern oder verbessern. Die obig dargestellten digitalen Höhenmodelle sind nach Jenks klassifiziert, da hier die Sichtbarkeit von Geländeformen am besten war. 
 
 # EP07 Animation in QGIS
 
@@ -210,27 +210,36 @@ Die Darstellung gibt einen schnellen, groben Überblick über die Windlage über
 
 <img width="3368" height="2380" alt="oldenburg2_5d-1" src="https://github.com/user-attachments/assets/3885b3ce-c709-4103-97fd-fd2e26338c1f" />
 
-Die Daten stammen von LGLN Niedersachsen und zeigen die Oldenburger Innenstadt. Für die Darstellung mussten zwei Kacheln (LOD2....) wie in der Karte dargestellt, genutzt werden. 
+Die Daten stammen von LGLN Niedersachsen und zeigen die Oldenburger Innenstadt. Für die Darstellung mussten zwei Kacheln (LOD2....) wie in der Karte dargestellt, genutzt werden. Auffällig ist das Fehlen von Polygonen öffentlicher Gebäude wie die Lambertikirche inmitten der Innenstadt oder das Bahnhofsgebäude im Nordosten. Da das Land Niedersachsen keine Sondermodelle anbietet (möglich wäre eine zu komplexe Dachstruktur bei Kirchen), werden die Modelle entweder durch die Randlage in der Kachel unvollständig und somit nicht darstellbar oder fehlen aus anderen Gründen. 
 
-- 2,5 D ? Beispiel DGM und wie QGIS damit umgeht
-- Sondermodelle/LOD3?
-
+> 2,5 D
+> 
+> Die Höhenwerte werden lediglich als Attribute eines 2D modellierten Objektes gespeichert. Dies ist zum Bespiel bei DGM der Fall. Senkrechte Wände, Tunnel oder Überstände lassen sich nicht darstellen, weil hier mehrere Punkte verschiedener Höhen übereinanderliegen. Gleichzeitig benötigen 2,5D Darstellungen dadurch weniger Prozessorleistung zur Darstellung.
 
 ## 3D Darstellung von Norderney
 
 <img width="2116" height="820" alt="Screenshot 2026-08-18 2018459" src="https://github.com/user-attachments/assets/dafc144e-7373-4f84-a016-4c2bf004b6f4" />
 
-prozess:
+Für die 3D-Ansicht von Norderney wurden vier Kacheln LOD2 Objekten genutzt. Als Basemap dient eine stylisierte Karte von Esri. 
+
+*Prozess:*
 <img width="1848" height="959" alt="Screenshot 2026-08-18 195944" src="https://github.com/user-attachments/assets/550914ff-f1bb-43e7-9f36-de7c4ae8b34f" />
- welliges Gelände, untenansicht
- <img width="2457" height="1213" alt="Screenshot 2026-08-18 200039" src="https://github.com/user-attachments/assets/c41bfc05-d713-4908-85bd-fbcd8abaa597" />
+
+*Problem: Nicht alle Gebäude liegen auch nach Anpassung eines Versatzes korrekt auf dem Gelände.*
+Norderney besitzt welliges Gelände, wie in der Untenansicht sichtbar wird.
+
+<img width="2457" height="1213" alt="Screenshot 2026-08-18 200039" src="https://github.com/user-attachments/assets/c41bfc05-d713-4908-85bd-fbcd8abaa597" />
+
+Es besteht die Möglichkeit das Gelände mit einem Modell zu hinterlegen.
 Für die Anpassung des 3D-Geländes wurde das DGM1 (Digitales Geländemodell mit einer Rasterbreite von 1 m) des Landesamtes für Geoinformation und Landesvermessung Niedersachsen genutzt. Auf OpenGeoDataNI wird es in 1x1km Kacheln zum Download bereitgestellt.
-Mosaik aus vier GeoTif DGM1 Kacheln als DGM für die 3D Ansicht
+
+*Bildung eines Mosaiks aus vier .geoTiff DGM1 Kacheln als Rasterlayer für die 3D Ansicht:*
 <img width="2553" height="1150" alt="Screenshot 2026-08-18 200833" src="https://github.com/user-attachments/assets/b0d594c1-29bd-4acc-a03b-060a51928f6c" />
-Ergebnis:
+
+Wie z.B. beim Turm sichtbar wird, liegen die Gebäude nun besser im Gelände.
 <img width="2363" height="1156" alt="Screenshot 2026-08-18 201233" src="https://github.com/user-attachments/assets/67f9b214-659f-4714-a229-b1a5df738aa7" />
 
-Anpassung mit Farbe durch regelbasierte Symbolisierung
+*Anpassung mit Farbe durch regelbasierte Symbolisierung:*
 <img width="2514" height="1307" alt="Screenshot 2026-08-18 201933" src="https://github.com/user-attachments/assets/0b134204-b5cd-4e99-b6eb-5cce430ca7db" />
 
 
