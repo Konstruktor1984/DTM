@@ -163,30 +163,34 @@ Die Karte gibt einen schnellen Überblick über die Austauschstudenten der BHT i
 <img width="9921" height="7015" alt="BerlinLegoMapModern" src="https://github.com/user-attachments/assets/023c528d-f965-4a26-b485-027a25cf05b6" />
 
 In der Lehrveranstaltung sollte ein digitales Geländemodell im Lego Stil von Berlin erstellt werden. Deutlich zu erkennen ist das Urstromtal und Erhebungen wie 
+
 <p align="center">
    <img width="60%" height="auto" alt="DeutschlandLegoMapModern" src="https://github.com/user-attachments/assets/2b845ec0-ca33-4e35-bdc7-221b4087b368" />
 <p>
 
 ## Umsetzung der Methode
-## Vor- und Nachteile der Metho
+Grundlage ist ein digitales Höhenmodell (DGM) Deutschlands als .geotiff-Datei. Das Rasterbild besteht aus Grauwerten, welche je nach Höhe variieren. Auf die Shapefile Deutschlands wurde ein Gitter (Quadrate) zugeschnitten. Der Rasterlayer des DGM und der Polygonvektorlayer des Gitters wurden mit der *Zonenstatistik* verrechnet. Auf jede Zelle des Polygonvektorlayers wird der durchschnittliche Höhenwert berechnet und abgespeichert. Die Zellen mit den Durchschnittswerten wurden entsprechend symbolisiert und im Legostil gestylt.
+
 
 # EP07 Animation in QGIS
 
 <img width="1012" height="639" alt="Geminiden2022-12-14" src="https://github.com/user-attachments/assets/bec81828-10f9-41ae-a3c9-7b1b0546a9db" />
-Dargestellt ist der Geminiden-Meteorschauer am 14.12.2022-15.12.2022 während seines Peaks über dem Vereinigten Königreich und Irland. 
+
+Dargestellt ist der Geminiden-Meteorschauer am 14.12.2022-15.12.2022 während seines Höhepunktes über dem Vereinigten Königreich und Irland. 
 
 ## Umsetzung der Methode
 
-meteoshowers.org
-https://tammojan.github.io/meteormap/
-Umwandlung Zeitformat in ISO Format -> colab
-Geometriegenerator LatLonBeg - LatLonEnd
-Interpolierte Linie
-Dynamische Zeitsteuerung
-Export als Bilderstapel
-GIF Erstellung mit Python -> colab
+Auf meteoshowers.org konnte sollte ein Meteorschauer herausgesucht werden. Der Datensatz stammt aus: https://tammojan.github.io/meteormap/. Die Daten bestehen aus einer Start- und Endkoordinate des jeweiligen Meteors sowie einem Zeitstempel, wann dieser aufgenommen wurde. Zuerst musste allerdings das Zeitformat in ein ISO Format umgewandelt werden, um in QGIS die dynamische Zeitsteuerung zu aktivieren.
+> ISO 8601 (Zeitformat)
+> 
+> YYYY-MM-DDThh:mm:ss.f (f = dezimale Bruchteile, in der Regel von Sekunden)
+> 
+> z.B. 2025-08-12T19:55:21.565
+
+In der Symbolisierung wurde mit dem Geometriegenerator zwischen den Koordinaten "LatLonBeg" und "LatLonEnd" für jeden Meteor eine interpolierte Linie gezeichnet, welche mit einem Farbverlaufshader den Schweif simuliert. Die Basemap ist in einem dunklen Grau und Schwarz gehalten, um die Nachtfarben darzustellen. In der dynamischen Zeitsteuerung wurde der Zeitraum des Höhepunktes mit dem zeitlichen Intervall von einer Minute als Bilderstapel exportiert. Die Umwandlung in ein GIF erfolgte wieder in Colab.
 
 ## Vor- und Nachteile der Methode
+Gerade bei animierten Darstellungen sind interaktive Elemente wichtig. Eine Möglichkeit den Meteorschauer zu verlangsamen, zu verschnellern oder zu vergrößern / verkleinern verbessert die Nutzerfreundlichkeit der Darstellung. 
 
 # EP08 Mesh-Daten
 
@@ -206,6 +210,10 @@ Die Darstellung gibt einen schnellen, groben Überblick über die Windlage über
 
 <img width="3368" height="2380" alt="oldenburg2_5d-1" src="https://github.com/user-attachments/assets/3885b3ce-c709-4103-97fd-fd2e26338c1f" />
 
+Die Daten stammen von LGLN Niedersachsen und zeigen die Oldenburger Innenstadt. Für die Darstellung mussten zwei Kacheln (LOD2....) wie in der Karte dargestellt, genutzt werden. 
+
+- 2,5 D ? Beispiel DGM und wie QGIS damit umgeht
+- Sondermodelle/LOD3?
 
 
 ## 3D Darstellung von Norderney
