@@ -137,15 +137,32 @@ Zu erkennen ist, das Tisza in den Städten Hochburgen an Wählern besitzt, währ
 <img width="4210" height="2975" alt="Hyperglobe BHT Studenten-1" src="https://github.com/user-attachments/assets/34db0a52-4975-44e8-8cc6-091c92564aa0" />
 
 ## Umsetzung der Methode
+Die Shapefiles der Kontinente, Ozeane und Länder stammen von naturalearthdata.org und die Daten der Austauschstudenten von der BHT Refereat Auslandsangelegenheiten. Für die Darstellung einer Ursprung-Ziel Karte sollte der Globus auf Berlin zentriert werden. 
+
 Definition einer eigenen Projektion, zentriert auf Berlin
 ```
 +proj=ortho +lat_0=52.52 +lon_0=13.40 +x_0=0 +y_0=0 +a=6371000 +b=6371000 +units=m +no_defs
 ```
+Für die Globusdarstellung wurde ein Punkt auf Berlin zentriert und mit dem Geometriegenerator ein Buffer mit der Länge des Erdradius gezeichnet. Die Shapeburst-Füllung gibt eine 3D-Wirkung.
+
+```
+buffer(make_point(0, 0), 6371000)
+```
+
+Ausgehend vom Punkt der BHT sind mit dem Geometriegenerator Linien zu den Austauschuniversitäten gezeichnet worden. Je nach Stärke (Anzahl der Studenten) ist die Linie rötlicher eingefärbt
+
+```
+make_line(make_point(13.33, 52.54), $geometry)
+```
+
 ## Vor- und Nachteile der Methode
+Die Karte gibt einen schnellen Überblick über die Austauschstudenten der BHT in der Welt. Allerdings ist der Überblick nur für Europa, Afrika, Westasien und Nordamerika zielführend. Sämtliche andere Länder liegen sehr stark verzerrt am Rand des Globus oder sind kaum sichtbar. Da die Darstellung eines Hyperglobes die 3D-Ansicht simuliert, ist eine echte 3D-Animation für eine Ursprung-Ziel Karte naheliegender. Für den Zweck einer 2D-Darstellung ist es trotzdem ausreichend. 
 
 # EP06 Digitales Höhenmodell in QGIS 
 
 <img width="9921" height="7015" alt="BerlinLegoMapModern" src="https://github.com/user-attachments/assets/023c528d-f965-4a26-b485-027a25cf05b6" />
+
+In der Lehrveranstaltung sollte ein digitales Geländemodell im Lego Stil von Berlin erstellt werden. Deutlich zu erkennen ist das Urstromtal und Erhebungen wie 
 <p align="center">
    <img width="60%" height="auto" alt="DeutschlandLegoMapModern" src="https://github.com/user-attachments/assets/2b845ec0-ca33-4e35-bdc7-221b4087b368" />
 <p>
@@ -199,7 +216,7 @@ prozess:
 <img width="1848" height="959" alt="Screenshot 2026-08-18 195944" src="https://github.com/user-attachments/assets/550914ff-f1bb-43e7-9f36-de7c4ae8b34f" />
  welliges Gelände, untenansicht
  <img width="2457" height="1213" alt="Screenshot 2026-08-18 200039" src="https://github.com/user-attachments/assets/c41bfc05-d713-4908-85bd-fbcd8abaa597" />
-
+Für die Anpassung des 3D-Geländes wurde das DGM1 (Digitales Geländemodell mit einer Rasterbreite von 1 m) des Landesamtes für Geoinformation und Landesvermessung Niedersachsen genutzt. Auf OpenGeoDataNI wird es in 1x1km Kacheln zum Download bereitgestellt.
 Mosaik aus vier GeoTif DGM1 Kacheln als DGM für die 3D Ansicht
 <img width="2553" height="1150" alt="Screenshot 2026-08-18 200833" src="https://github.com/user-attachments/assets/b0d594c1-29bd-4acc-a03b-060a51928f6c" />
 Ergebnis:
