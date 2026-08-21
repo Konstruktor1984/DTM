@@ -66,12 +66,19 @@ Als Variante sollte das Ergebnis ebenfalls als Punktrasterkarte dargestellt werd
 # EP04 value-by-alpha-mapping
 
 <img width="4960" height="3507" alt="UngarnWahlen3fach" src="https://github.com/user-attachments/assets/b64942b1-2936-491f-a4c7-93b86a50a4a0" />
+Die Wahlkreise als .json-Dateien und die Stimmenverteilungen als .csv-Dateien der Parlamentswahlen in Ungarn 2026 stammen vom der Website des National Election Office Ungarns. Auf einem A3-Layout sollten drei verschiedene Karten dargestellt werden:
+
+(1) Wahlkreis-Sieger nach Farbton und Stimmenvorsprung (%) gegenüber der zweitplatzierten Partei nach Transparenz
+
+(2) Stimmenanteil der Partei "Tisza" von der Anzahl der Wahlberechtigten eines jedem Wahlkreises
+
+(3) Stimmenanteil der Partei "Fidesz" von der Anzahl der Wahlberechtigten eines jedem Wahlkreises
 
 ## Umsetzung der Methode
-Umwandlung json zu geojson
 
+Zuerst wurde die .json-Datei der Wahlkreise in Google Colab zu einer QGIS konformen .geojson umgewandelt. Die Wahldaten wurden durch den Feldrechner in QGIS um die benötigten Werte ergänzt. 
+Wahlkreissieger nach Stimmen in einer Spalte darstellen:
 
-Code zur Auswahl der gewinnenden Partei in Attributtabelle
 ```
 case
  
@@ -83,13 +90,27 @@ else 'Unentschieden'
 
 end
 ```
-win_value berechnen mit max Funktion (max Tidasz, Fidesz)
 
-win_rel berechnen mit win value / wahlberechtigte
+Stimmenzahl des Wahlkreissiegers (win_value) in einer Spalte darstellen:
 
-win_advantage berechnen mit abs (abs (tidasz-fidesz)/(tidasz+fidesz+mh)*100
+```
+max("ungarn_wahlen_2026_Tisza_Stimmen", "ungarn_wahlen_2026_Fidesz_Stimmen")
+```
 
-value by alpha variieren (nach Vorsprung)
+Den relativen Stimmenanteil des Wahlkreissiegers (win_rel) in einer Spalte darstellen:
+
+```
+win value / "ungarn_wahlen_2026_Wahlberechtigte"
+```
+
+Stimmenvorsprung: 
+
+```
+abs (abs ("ungarn_wahlen_2026_Tisza_Stimmen"-"ungarn_wahlen_2026_Fidesz_Stimmen") / ("ungarn_wahlen_2026_Tisza_Stimmen"+"ungarn_wahlen_2026_Fidesz_Stimmen"+"ungarn_wahlen_2026_mh_Stimmen")*100
+```
+
+value by alpha variieren (nach Stimmenvorsprung) (regelbasierte Symbolisierung)
+
 ```
 set_color_part( 
  'black',
@@ -100,8 +121,16 @@ set_color_part(
  )
 ```
 
-## Vor- und Nachteile der Methode
+Auf die nach Wahlkreissieger eingefärbten Wahlkreise wird eine schwarze Fläche gelegt, welche in der Transparenz je nach Höhe des Stimmenvorsprungs variiert. 
 
+>  Value-by-alpha Karten:
+>
+> stellen zwei Variablen (bivariat) gleichzeitig dar, indem zwei visuelle Eigenschaften (Farbton und Transparenz)
+miteinander kombiniert werden. "Alpha" bezeichnet in der Computergrafik den Wert der Transparenz einer Farbe, es    werden also Werte (hier: Stimmenvorsprung) durch den Alpha-Wert / Transparenz abgebildet. Ziel dieser Darstellung ist Kombination zweier Kartendarstellung in eine, die Reduktion einer visuellen Überforderung (unrelevante Daten 
+treten in den Hintergrund) und die Darstellung einer räumlichen Verteilung ("Hochburgen"). 
+
+## Erkenntnisse 
+Zu erkennen ist, das Tisza in den Städten Hochburgen an Wählern besitzt, während in den ländlicheren Gebieten der Vorsprung zu der zweitplatzierten Partei (Fidesz) geringer ist. 
 
 # EP05 Ursprung-Ziel Karten
 
